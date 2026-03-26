@@ -28,6 +28,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAreaRepository, AreaRepository>();
 builder.Services.AddScoped<AreaService>();
 
+//Localizacao
+builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
+builder.Services.AddScoped<LocalizacaoService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
