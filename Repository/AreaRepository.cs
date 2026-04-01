@@ -43,7 +43,7 @@ namespace GerenciamentoPatrimonio.Repository
 
             Area areaBanco = _context.Area.Find(area.AreaID);
 
-            if (area == null)
+            if (areaBanco == null)
             {
                 return;
             }

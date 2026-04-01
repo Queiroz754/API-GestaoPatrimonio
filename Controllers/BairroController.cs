@@ -1,6 +1,5 @@
 ﻿using GerenciamentoPatrimonio.Applications.Service;
-using GerenciamentoPatrimonio.DTO.AreaDto;
-using GerenciamentoPatrimonio.Execeptions;
+using GerenciamentoPatrimonio.DTO.BairroDto;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,58 +7,60 @@ namespace GerenciamentoPatrimonio.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AreaController : ControllerBase
+    public class BairroController : ControllerBase
     {
-        private readonly AreaService _service;
+        private readonly BairroService _service;
 
-        public AreaController(AreaService service)
-        { 
+        public BairroController(BairroService service)
+        {
             _service = service;
         }
+
         [HttpGet]
-        public ActionResult<List<ListarAreaDto>> Listar()
+        public ActionResult<List<ListarBairroDto>> Listar()
         {
-            List<ListarAreaDto> areas = _service.Listar();
-            return areas;
+            List<ListarBairroDto> bairro = _service.Listar();
+            return bairro;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ListarAreaDto> BuscarPorId(Guid id)
+        public ActionResult<ListarBairroDto> BuscarPorId(Guid id)
         {
             try
             {
-                ListarAreaDto area = _service.BuscarPorId(id);
-                return Ok(area);
+                ListarBairroDto bairro = _service.BuscarPorId(id);
+                return Ok(bairro);
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(ex.Message);
             }
+
         }
 
         [HttpPost]
-        public ActionResult Adicionar(CriarAreaDto dto)
+        public ActionResult Adicionar(CriarBairroDto dto)
         {
             try
             {
                 _service.Adicionar(dto);
                 return Created();
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPut("{id}")]
-        public ActionResult Atualizar(Guid id, CriarAreaDto dto)
+        public ActionResult Atualizar(Guid id, CriarBairroDto dto)
         {
             try
             {
                 _service.Atualizar(id, dto);
                 return NoContent();
             }
-            catch (DomainException ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

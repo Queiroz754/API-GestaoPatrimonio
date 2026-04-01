@@ -32,6 +32,14 @@ builder.Services.AddScoped<AreaService>();
 builder.Services.AddScoped<ILocalizacaoRepository, LocalizacaoRepository>();
 builder.Services.AddScoped<LocalizacaoService>();
 
+//CIDADE
+builder.Services.AddScoped<ICidadeRepository, CidadeRepository>();
+builder.Services.AddScoped<CidadeService>();
+
+//BAIRRO
+builder.Services.AddScoped<IBairroRepository, BairroRepository>();
+builder.Services.AddScoped<BairroService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
