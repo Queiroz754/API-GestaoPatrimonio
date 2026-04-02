@@ -9,6 +9,10 @@ namespace GerenciamentoPatrimonio.Repository
     {
         private readonly GestaoPatrimoniosContext _context;
 
+        public EnderecoRepository(GestaoPatrimoniosContext context)
+        {
+            _context = context;
+        }
         public List<Endereco> Listar()
         {
             return _context.Endereco.OrderBy(endereco => endereco.Logradouro).ToList();
