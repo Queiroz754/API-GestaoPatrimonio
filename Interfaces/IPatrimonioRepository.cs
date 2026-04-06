@@ -12,7 +12,7 @@ namespace GerenciamentoPatrimonio.Interfaces
         bool StatusPatrimonioExiste(Guid statusPatrimoioId);
 
         void Adicionar(Patrimonio patrimonio);
-        void Atualizar(Patrimonio patrimonio);
+        void Atualizar(Patrimonio patrimonio, Guid id);
         void AtualizarStatus(Patrimonio patrimonio);
     }
 }

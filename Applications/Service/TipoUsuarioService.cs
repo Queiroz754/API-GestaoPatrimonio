@@ -53,7 +53,7 @@ namespace GerenciamentoPatrimonio.Applications.Service
 
             if (tipoUsuario == null)
             {
-                throw new DomainException("Tipo de usuário não encontrada.");
+                throw new DomainException("Tipo de usuário não encontrado.");
             }
 
             ListarTipoUsuarioDto tipoUsuarioDto = new ListarTipoUsuarioDto

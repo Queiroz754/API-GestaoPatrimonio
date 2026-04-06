@@ -6,7 +6,7 @@ namespace GerenciamentoPatrimonio.Interfaces
     {
         List<StatusTransferencia> Listar();
         StatusTransferencia BuscarPorId(Guid statusTransferenciaId);
-        StatusTransferencia BuscarPorName(string nameStatus);
+        StatusTransferencia BuscarPorNome(string nameStatus);
 
         void Adicionar(StatusTransferencia statusTransferencia);
         void Atualizar(StatusTransferencia statusTransferencia);

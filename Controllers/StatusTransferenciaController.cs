@@ -1,6 +1,6 @@
 ﻿using GerenciamentoPatrimonio.Applications.Service;
-using GerenciamentoPatrimonio.DTO.AreaDto;
-using GerenciamentoPatrimonio.DTO.TipoUsuarioDto;
+using GerenciamentoPatrimonio.DTO.StatusPatrimonioDto;
+using GerenciamentoPatrimonio.DTO.StatusTransferenciaDto;
 using GerenciamentoPatrimonio.Execeptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,29 +9,29 @@ namespace GerenciamentoPatrimonio.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TipoUsuarioController : ControllerBase
+    public class StatusTransferenciaController : ControllerBase
     {
-        private readonly TipoUsuarioService _service;
+        private readonly StatusTransferenciaService _service;
 
-        public TipoUsuarioController(TipoUsuarioService service)
+        public StatusTransferenciaController(StatusTransferenciaService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public ActionResult<List<ListarTipoUsuarioDto>> Listar()
+        public ActionResult<List<ListarStatusTransferenciaDto>> Listar()
         {
-            List<ListarTipoUsuarioDto> tipoUsuarios = _service.Listar();
-            return tipoUsuarios;
+            List<ListarStatusTransferenciaDto> status = _service.Listar();
+            return status;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ListarTipoUsuarioDto> BuscarPorId(Guid id)
+        public ActionResult<ListarStatusTransferenciaDto> BuscarPorId(Guid id)
         {
             try
             {
-                ListarTipoUsuarioDto tipo = _service.BuscarPorId(id);
-                return Ok(tipo);
+                ListarStatusTransferenciaDto status = _service.BuscarPorId(id);
+                return Ok(status);
             }
             catch (DomainException ex)
             {
@@ -40,7 +40,7 @@ namespace GerenciamentoPatrimonio.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(CriarTipoUsuarioDto dto)
+        public ActionResult Adicionar(CriarStatusTransferenciaDto dto)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace GerenciamentoPatrimonio.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Atualizar(Guid id, CriarTipoUsuarioDto dto)
+        public ActionResult Atualizar(Guid id, CriarStatusTransferenciaDto dto)
         {
             try
             {

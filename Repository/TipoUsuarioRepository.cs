@@ -49,6 +49,8 @@ namespace GerenciamentoPatrimonio.Repository
             }
 
             tipoUsuarioBanco.NomeTipo = tipoUsuario.NomeTipo;
+
+            _context.SaveChanges();
         }
 
     }

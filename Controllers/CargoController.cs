@@ -1,5 +1,5 @@
 ﻿using GerenciamentoPatrimonio.Applications.Service;
-using GerenciamentoPatrimonio.DTO.AreaDto;
+using GerenciamentoPatrimonio.DTO.CargoDto;
 using GerenciamentoPatrimonio.DTO.TipoUsuarioDto;
 using GerenciamentoPatrimonio.Execeptions;
 using Microsoft.AspNetCore.Http;
@@ -9,29 +9,29 @@ namespace GerenciamentoPatrimonio.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TipoUsuarioController : ControllerBase
+    public class CargoController : ControllerBase
     {
-        private readonly TipoUsuarioService _service;
+        private readonly CargoService _service;
 
-        public TipoUsuarioController(TipoUsuarioService service)
+        public CargoController(CargoService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public ActionResult<List<ListarTipoUsuarioDto>> Listar()
+        public ActionResult<List<ListarCargoDto>> Listar()
         {
-            List<ListarTipoUsuarioDto> tipoUsuarios = _service.Listar();
-            return tipoUsuarios;
+            List<ListarCargoDto> cargo = _service.Listar();
+            return cargo;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<ListarTipoUsuarioDto> BuscarPorId(Guid id)
+        public ActionResult<ListarCargoDto> BuscarPorId(Guid id)
         {
             try
             {
-                ListarTipoUsuarioDto tipo = _service.BuscarPorId(id);
-                return Ok(tipo);
+                ListarCargoDto cargo = _service.BuscarPorId(id);
+                return Ok(cargo);
             }
             catch (DomainException ex)
             {
@@ -40,7 +40,7 @@ namespace GerenciamentoPatrimonio.Controllers
         }
 
         [HttpPost]
-        public ActionResult Adicionar(CriarTipoUsuarioDto dto)
+        public ActionResult Adicionar(CriarCargoDto dto)
         {
             try
             {
@@ -54,7 +54,7 @@ namespace GerenciamentoPatrimonio.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult Atualizar(Guid id, CriarTipoUsuarioDto dto)
+        public ActionResult Atualizar(Guid id, CriarCargoDto dto)
         {
             try
             {
