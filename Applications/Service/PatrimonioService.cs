@@ -55,10 +55,26 @@ namespace GerenciamentoPatrimonio.Applications.Service
             Validar.ValidarNome(dto.Denominacao);
 
             Patrimonio patrimonioExistente = _repository.BuscarPorNumeroPatrimonio(dto.NumeroPatrimonio);
+
             
             if (patrimonioExistente != null)
             {
                 throw new DomainException("Já existe um patrimonio cadastrada com esse nome.");
+            }
+
+            if(!_repository.LocalizacaoExiste(dto.LocalizacaoID))
+            {
+                throw new DomainException("Localização não cadastrada no sistema");
+            }
+
+            if (!_repository.TipoPatrimonioExiste(dto.TipoPatrimonioID))
+            {
+                throw new DomainException("Tipo patrimonio não cadastrada no sistema");
+            }
+
+            if (!_repository.StatusPatrimonioExiste(dto.StatusPatrimonioID))
+            {
+                throw new DomainException("Status de patrimonio não cadastrada no sistema");
             }
 
             Patrimonio patrimonio  = new Patrimonio
@@ -75,7 +91,7 @@ namespace GerenciamentoPatrimonio.Applications.Service
             _repository.Adicionar(patrimonio);
         }
 
-        public void Atualizar(Patrimonio dto, Guid id)
+        public void Atualizar(Guid id, CriarPatrimonioDto dto)
         {
             Validar.ValidarNome(dto.Denominacao);
 
@@ -83,8 +99,37 @@ namespace GerenciamentoPatrimonio.Applications.Service
 
             if (patrimonioBanco == null)
             {
-               
+                throw new DomainException("Patrimonio não encontrado.");
             }
+
+            Patrimonio patrimonioExiste = _repository.BuscarPorNumeroPatrimonio(dto.NumeroPatrimonio);
+
+            if (patrimonioExiste != null)
+            {
+                throw new DomainException("Esse Patrimonio já está cadastrado.");
+            }
+
+            if (!_repository.LocalizacaoExiste(dto.LocalizacaoID))
+            {
+                throw new DomainException("Localização não cadastrada no sistema");
+            }
+
+            if (!_repository.TipoPatrimonioExiste(dto.TipoPatrimonioID))
+            {
+                throw new DomainException("Tipo patrimonio não cadastrada no sistema");
+            }
+
+            if (!_repository.StatusPatrimonioExiste(dto.StatusPatrimonioID))
+            {
+                throw new DomainException("Status de patrimonio não cadastrada no sistema");
+            }
+
+            patrimonioBanco.Denominacao = dto.Denominacao;
+            patrimonioBanco.NumeroPatrimonio = dto.NumeroPatrimonio;
+            patrimonioBanco.Valor = dto.Valor;
+            patrimonioBanco.Imagem = dto.Imagem;
+
+            _repository.Atualizar(patrimonioBanco);
         }
 
     }

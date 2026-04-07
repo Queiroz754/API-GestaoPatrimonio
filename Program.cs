@@ -48,6 +48,14 @@ builder.Services.AddScoped<EnderecoService>();
 builder.Services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
 builder.Services.AddScoped<TipoUsuarioService>();
 
+//TIPO PATRIMONIO
+builder.Services.AddScoped<ITipoPatrimonioRepository, TipoPatrimonioRepository>();
+builder.Services.AddScoped<TipoPatrimonioService>();
+
+//TIPO ALTERACAO
+builder.Services.AddScoped<ITipoAlteracaoRepository, TipoAlteracaoRepository>();
+builder.Services.AddScoped<TipoAlteracaoService>();
+
 //CARGO
 builder.Services.AddScoped<ICargoRepository, CargoRepository>();
 builder.Services.AddScoped<CargoService>();
@@ -59,6 +67,11 @@ builder.Services.AddScoped<StatusPatrimonioService>();
 //STATUS TRANSFERENCIA
 builder.Services.AddScoped<IStatusTransferenciaRepository, StatusTransferenciaRepository>();
 builder.Services.AddScoped<StatusTransferenciaService>();
+
+//PATRIMONIO
+builder.Services.AddScoped<IPatrimonioRepository, PatrimonioRepository>();
+builder.Services.AddScoped<PatrimonioService>();
+
 
 var app = builder.Build();
 
