@@ -2,6 +2,7 @@ using DotNetEnv;
 using GerenciamentoPatrimonio.Applications.Service;
 using GerenciamentoPatrimonio.Contexts;
 using GerenciamentoPatrimonio.Interfaces;
+using GerenciamentoPatrimonio.Repositories;
 using GerenciamentoPatrimonio.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -48,10 +49,6 @@ builder.Services.AddScoped<EnderecoService>();
 builder.Services.AddScoped<ITipoUsuarioRepository, TipoUsuarioRepository>();
 builder.Services.AddScoped<TipoUsuarioService>();
 
-//TIPO PATRIMONIO
-builder.Services.AddScoped<ITipoPatrimonioRepository, TipoPatrimonioRepository>();
-builder.Services.AddScoped<TipoPatrimonioService>();
-
 //TIPO ALTERACAO
 builder.Services.AddScoped<ITipoAlteracaoRepository, TipoAlteracaoRepository>();
 builder.Services.AddScoped<TipoAlteracaoService>();
@@ -67,6 +64,10 @@ builder.Services.AddScoped<StatusPatrimonioService>();
 //STATUS TRANSFERENCIA
 builder.Services.AddScoped<IStatusTransferenciaRepository, StatusTransferenciaRepository>();
 builder.Services.AddScoped<StatusTransferenciaService>();
+
+//SOLICITACAO TRANSFERENCIA
+builder.Services.AddScoped<ISolicitacaoTransferenciaRepository, SolicitacaoTransferenciaRepository>();
+builder.Services.AddScoped<SolicitacaoTransferenciaService>();
 
 //PATRIMONIO
 builder.Services.AddScoped<IPatrimonioRepository, PatrimonioRepository>();

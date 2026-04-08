@@ -1,0 +1,45 @@
+﻿using GerenciamentoPatrimonio.Applications.Service;
+using GerenciamentoPatrimonio.Applications.Services;
+using GerenciamentoPatrimonio.DTO.SolicitacaoTransferenciaDto;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace GerenciamentoPatrimonio.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SolicitacaoTransferenciaController : ControllerBase
+    {
+        private readonly SolicitacaoTransferenciaService _service;
+
+        public SolicitacaoTransferenciaController(SolicitacaoTransferenciaService service)
+        {
+            _service = service;
+        }
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult <List<ListarSolicitacaoTransferenciaDto>> Listar()
+        {
+            List<ListarSolicitacaoTransferenciaDto> solicitacoes = _service.Listar();
+            return Ok(solicitacoes);
+        }
+
+
+        [Authorize]
+        [HttpGet("{id}")]
+        public ActionResult<ListarSolicitacaoTransferenciaDto> BuscarPorId(Guid id)
+        {
+            try
+            {
+                ListarSolicitacaoTransferenciaDto solicitacao = _service.BuscarPorId(id);
+                return Ok(solicitacao);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
+}
