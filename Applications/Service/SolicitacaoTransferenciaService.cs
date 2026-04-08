@@ -19,33 +19,33 @@ namespace GerenciamentoPatrimonio.Applications.Services
 
         public List<ListarSolicitacaoTransferenciaDto> Listar()
         {
-            List<ListarSolicitacaoTransferenciaDto> solicitacoes = _repository.Listar();
+            List<SolicitacaoTransferencia> solicitacoes = _repository.Listar();
             List<ListarSolicitacaoTransferenciaDto> solicitacoesDTO = solicitacoes.Select(solicitacao => new ListarSolicitacaoTransferenciaDto
             {
                 TransferenciaID = solicitacao.TransferenciaID,
-                DateCriacaoSolicitante = solicitacao.DateCriacaoSolicitante,
+                DateCriacaoSolicitante = solicitacao.DataCriacaoSolicitante,
                 DataResposta = solicitacao.DataResposta,
                 Justificativa = solicitacao.Justificativa,
-                StatusTransferenciaId = solicitacao.StatusTransferenciaId,
-                UsuarioIdSolicitacao = solicitacao.UsuarioIdSolicitacao,
-                UsuarioIdAprovacao = solicitacao.UsuarioIdAprovacao,
-                PatrimonioId = solicitacao.PatrimonioId,
-                LocalizacaoId = solicitacao.LocalizacaoId
+                StatusTransferenciaId = solicitacao.StatusTransferenciaID,
+                UsuarioIdSolicitacao = solicitacao.UsuarioIDSolicitacao,
+                UsuarioIdAprovacao = solicitacao.UsuarioIDAprovacao,
+                PatrimonioId = solicitacao.PatrimonioID,
+                LocalizacaoId = solicitacao.LocalizacaoID
             }).ToList();
 
             return solicitacoesDTO;
         }
 
-        public ListarSolicitacaoTransferenciaDto BuscarPorId(Guid transferenciaID)
+        public ListarSolicitacaoTransferenciaDto BuscarPorId(Guid transferenciaId)
         {
-            SolicitacaoTransferencia solicitacao = _repository.BuscarPorId(transferenciaID);
+            SolicitacaoTransferencia solicitacao = _repository.BuscarPorId(transferenciaId);
 
             if (solicitacao == null)
             {
-                throw new DomainException("Solicitação de transferencia não encontrada");
+                throw new DomainException("Solicitação de transferência não encontrada.");
             }
 
-            ListarSolicitacaoTransferenciaDto solicitacaoDTO = new ListarSolicitacaoTransferenciaDto
+            ListarSolicitacaoTransferenciaDto solicitacaoDto = new ListarSolicitacaoTransferenciaDto
             {
                 TransferenciaID = solicitacao.TransferenciaID,
                 DateCriacaoSolicitante = solicitacao.DataCriacaoSolicitante,
@@ -58,7 +58,7 @@ namespace GerenciamentoPatrimonio.Applications.Services
                 LocalizacaoId = solicitacao.LocalizacaoID
             };
 
-            return solicitacaoDTO;
+            return solicitacaoDto;
         }
     }
 }

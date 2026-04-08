@@ -4,6 +4,6 @@
     {
         public string Justificativa { get; set; }
         Guid PatrimonioId { get; set; }
-        Guid LocalId { get; set; }
+        Guid LocalizacaoId { get; set; }
     }
 }

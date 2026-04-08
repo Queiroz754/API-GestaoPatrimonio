@@ -14,7 +14,7 @@ Env.Load();
 //Pegando a connection string
 string connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
-// Conexão com banco
+// Conexï¿½o com banco
 builder.Services.AddDbContext<GestaoPatrimoniosContext>(options =>
     options.UseSqlServer(connectionString));
 

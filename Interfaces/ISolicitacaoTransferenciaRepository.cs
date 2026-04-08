@@ -5,7 +5,7 @@ namespace GerenciamentoPatrimonio.Interfaces
     public interface ISolicitacaoTransferenciaRepository
     {
         List<SolicitacaoTransferencia> Listar();
-        SolicitacaoTransferencia BuscarporId(Guid id);
+        SolicitacaoTransferencia BuscarPorId(Guid id);
         bool ExisteSolicitacaoPendente(Guid patrimonioID);
         bool UsuarioResponsavelDaLocalizacao(Guid usuarioID, Guid localizacaoID);
         StatusTransferencia BuscarStatusTransferenciaPorNome(string nomeStatus);
