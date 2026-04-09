@@ -1,7 +1,6 @@
 ﻿using GerenciamentoPatrimonio.Applications.Regras;
 using GerenciamentoPatrimonio.Domains;
 using GerenciamentoPatrimonio.DTO.TipoAlteracaoDto;
-using GerenciamentoPatrimonio.DTO.TipoPatrimonioDto;
 using GerenciamentoPatrimonio.Execeptions;
 using GerenciamentoPatrimonio.Interfaces;
 

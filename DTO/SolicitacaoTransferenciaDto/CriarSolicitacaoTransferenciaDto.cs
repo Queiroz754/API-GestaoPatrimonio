@@ -3,7 +3,7 @@
     public class CriarSolicitacaoTransferenciaDto
     {
         public string Justificativa { get; set; }
-        Guid PatrimonioId { get; set; }
-        Guid LocalizacaoId { get; set; }
+        public Guid PatrimonioId { get; set; }
+        public Guid LocalizacaoId { get; set; }
     }
 }

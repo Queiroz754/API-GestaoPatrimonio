@@ -1,7 +1,6 @@
 ﻿using GerenciamentoPatrimonio.Applications.Service;
 using GerenciamentoPatrimonio.Domains;
 using GerenciamentoPatrimonio.DTO.TipoAlteracaoDto;
-using GerenciamentoPatrimonio.DTO.TipoPatrimonioDto;
 using GerenciamentoPatrimonio.Execeptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
